@@ -5,7 +5,7 @@
 /**
  * main - Entry point
  *
- * Description: Prints to stdout weather last digit of a random number is
+ * Description: Prints weather last digit of a random number is
  * greater than 5, 0, or less than 6
  *
  * Return: 0
