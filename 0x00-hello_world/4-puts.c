@@ -4,7 +4,7 @@
  * main - Entry point
  *
  * Description: Prints '"Programming is like building a multilingual' puzzle to
- * stdin
+ * stdout
  *
  * Return: 0
  */

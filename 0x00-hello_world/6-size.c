@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * Description: Prints size of various data types
+ * Description: Prints size of various data types to stdout
  *
  * Return: 0
  */

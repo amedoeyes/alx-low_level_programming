@@ -4,7 +4,7 @@
  * main - Entry point
  *
  * Description: Prints 'with proper grammar, but the outcome is a piece of art,
- * puzzle to stdin
+ * puzzle to stdout
  *
  * Return: 0
  */
