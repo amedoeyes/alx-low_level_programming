@@ -15,7 +15,7 @@ int main(void)
 
 	for (i = 0; i < 26; i++)
 	{
-		if (i == 4 || i == 15)
+		if (i == 4 || i == 16)
 			continue;
 
 		putchar('a' + i);
