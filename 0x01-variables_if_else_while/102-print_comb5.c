@@ -10,10 +10,13 @@
 
 int main(void)
 {
+	int i;
 
-	for (int i = 0; i < 100; i++)
+	for (i = 0; i < 100; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		int j;
+
+		for (j = 0; j < 100; j++)
 		{
 			if (i >= j)
 				continue;

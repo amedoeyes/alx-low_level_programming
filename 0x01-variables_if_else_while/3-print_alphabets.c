@@ -10,14 +10,17 @@
 
 int main(void)
 {
-	for (int i = 0; i < 26; i++)
+	int i;
+	int j;
+
+	for (i = 0; i < 26; i++)
 	{
 		putchar('a' + i);
 	}
 
-	for (int i = 0; i < 26; i++)
+	for (j = 0; i < 26; j++)
 	{
-		putchar('A' + i);
+		putchar('A' + j);
 	}
 
 	putchar('\n');

@@ -13,11 +13,10 @@
 int main(void)
 {
 	int n;
+	char *out;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-
-	char *out;
 
 	if (n > 0)
 		out = "positive";

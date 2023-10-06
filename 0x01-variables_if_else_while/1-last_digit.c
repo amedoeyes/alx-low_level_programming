@@ -14,12 +14,12 @@
 int main(void)
 {
 	int n;
+	char *out;
+	int lastDigit;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-
-	int lastDigit = n % 10;
-	char *out;
+	lastDigit = n % 10;
 
 	if (lastDigit > 5)
 		out = "and is greater than 5";

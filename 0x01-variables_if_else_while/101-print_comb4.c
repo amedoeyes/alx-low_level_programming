@@ -10,12 +10,17 @@
 
 int main(void)
 {
+	int i;
 
-	for (int i = 0; i < 10; i++)
+	for (i = 0; i < 10; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		int j;
+
+		for (j = 0; j < 10; j++)
 		{
-			for (int k = 0; k < 10; k++)
+			int k;
+
+			for (k = 0; k < 10; k++)
 			{
 				if (i >= j || i >= k || j >= k)
 					continue;
