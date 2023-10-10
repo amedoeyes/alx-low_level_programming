@@ -12,17 +12,17 @@ int main(void)
 {
 	long n1 = 0;
 	long n2 = 1;
+	long r = 0;
 	long sum = 0;
-	int i;
 
-	for (i = 0; i < 4000000; i++)
+	while (r < 4000000)
 	{
-		int temp = n1 + n2;
+		r = n1 + n2;
 		n1 = n2;
-		n2 = temp;
+		n2 = r;
 
-		if (temp % 2 == 0)
-			sum += temp;
+		if (r % 2 == 0)
+			sum += r;
 	}
 
 	printf("%ld\n", sum);
