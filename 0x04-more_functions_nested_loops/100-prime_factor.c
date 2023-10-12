@@ -1,5 +1,13 @@
 #include <stdio.h>
 
+/**
+ * isPrime - checks if a number is prime
+ *
+ * @n: The number to be checked
+ *
+ * Return: 1 if prime otherwise 0
+ */
+
 int isPrime(long n)
 {
 	long i;
@@ -21,6 +29,12 @@ int isPrime(long n)
 
 	return (1);
 }
+
+/**
+ * main - Prints the largest prime factor of the number 612852475143
+ *
+ * Return: 0
+ */
 
 int main(void)
 {
