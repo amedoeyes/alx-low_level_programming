@@ -30,7 +30,7 @@ void puts_half(char *s)
 	int length = string_length(s) + 1;
 	int i;
 
-	for (i = length / 2; i < length; i++)
+	for (i = length / 2; i < length - 1; i++)
 	{
 		_putchar(s[i]);
 	}
