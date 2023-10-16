@@ -27,7 +27,7 @@ int string_length(char *s)
 
 void puts_half(char *s)
 {
-	int length = string_length(s);
+	int length = string_length(s) + 1;
 	int i;
 
 	for (i = length / 2; i < length; i++)
