@@ -6,7 +6,6 @@
  * Return: the length of the string
  */
 
-#include <stdio.h>
 int string_length(char *s)
 {
 	int i = 0;
