@@ -2,6 +2,7 @@
 
 /**
  * string_length - returns the length of a string
+ *
  * @s: the string
  *
  * Return: the length of the string
