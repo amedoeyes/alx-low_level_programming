@@ -11,12 +11,14 @@
 
 int main(void)
 {
+	srand(time(NULL));
+
 	int sum = 0;
 	char c;
 
 	do
 	{
-		c = rand() % 128;
+		c = '!' + rand() % ('!' - '~' + 1);
 		sum = sum + c;
 
 		putchar(c);
