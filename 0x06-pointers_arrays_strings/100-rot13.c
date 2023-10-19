@@ -10,22 +10,22 @@
 
 char *rot13(char *s)
 {
-	int i;
+	int i, j;
+	char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char *alphabet_rot13 =
+		"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	for (i = 0; s[i]; i++)
 	{
-		int base;
-
-		if (!isalpha(s[i]))
-			continue;
-
-		if (islower(s[i]))
-			base = 'a';
-		else
-			base = 'A';
-
-		s[i] = ((s[i] - base + 13) % 26) + base;
+		for (j = 0; alphabet[j]; j++)
+		{
+			if (s[i] == alphabet[j])
+			{
+				s[i] = alphabet_rot13[j];
+				break;
+			}
+		}
 	}
 
-	return s;
+	return (s);
 }
