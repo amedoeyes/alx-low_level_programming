@@ -14,12 +14,6 @@ void print_buffer(char *buffer, int size)
 {
 	int i, j;
 
-	if (size <= 0)
-	{
-		printf("\n");
-		return;
-	}
-
 	for (i = 0; i < size; i += SIZE)
 	{
 		printf("%08x: ", i);
@@ -33,7 +27,12 @@ void print_buffer(char *buffer, int size)
 			}
 
 			printf("%02x", buffer[j]);
-			printf("%02x", buffer[j + 1]);
+
+			if (j + 1 < size)
+				printf("%02x", buffer[j + 1]);
+			else
+				printf("  ");
+
 			printf(" ");
 		}
 
@@ -42,4 +41,7 @@ void print_buffer(char *buffer, int size)
 
 		printf("\n");
 	}
+
+	if (size <= 0)
+		printf("\n");
 }
