@@ -1,6 +1,5 @@
 #include <ctype.h>
 #include <stdbool.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -22,6 +21,8 @@ void get_words(char *str, int *count, int **lengths, int **positions)
 	{
 		while (isspace(str[i]))
 			i++;
+		if (!str[i])
+			break;
 		words_count++;
 		while (str[i] && !isspace(str[i]))
 			i++;
