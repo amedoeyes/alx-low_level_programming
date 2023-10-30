@@ -12,7 +12,15 @@
 
 char *str_concat(char *str1, char *str2)
 {
-	char *concat = (char *)malloc(strlen(str1) + strlen(str2));
+	char *concat;
+
+	str1 = str1 ? str1 : "";
+	str2 = str2 ? str2 : "";
+
+	concat = (char *)malloc(strlen(str1) + strlen(str2) + 1);
+
+	if (concat == NULL)
+		return (NULL);
 
 	strcpy(concat, str1);
 	strcat(concat, str2);
