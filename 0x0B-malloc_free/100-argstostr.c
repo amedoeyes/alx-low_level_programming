@@ -13,23 +13,23 @@
 char *argstostr(int ac, char **av)
 {
 	char *concat;
-	int concatlen;
+	int length = 1;
 	int i;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
-		concatlen += strlen(av[i]) + 1;
+		length += strlen(av[i]) + 1;
 	}
 
-	concat = (char *)malloc(concatlen + 1);
+	concat = (char *)malloc(length);
 
 	if (concat == NULL)
 		return (NULL);
 
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		strcat(concat, av[i]);
 		strcat(concat, "\n");
