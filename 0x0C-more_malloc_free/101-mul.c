@@ -25,7 +25,7 @@ void exit_error(void)
 
 bool is_digits(char *str)
 {
-	int i;
+	size_t i;
 
 	for (i = 0; str[i]; i++)
 		if (!isdigit(str[i]))
@@ -37,16 +37,16 @@ bool is_digits(char *str)
 /**
  * mult - multiplies two string of numbers
  *
- * @a: string 1
- * @b: string 2
+ * @num1: string 1
+ * @num2: string 2
  *
  * Return: pointer to result
  */
 
-int *mult(char *a, char *b)
+int *mult(char *num1, char *num2)
 {
-	int len1 = strlen(a);
-	int len2 = strlen(b);
+	size_t len1 = strlen(num1);
+	size_t len2 = strlen(num2);
 	int i, j;
 
 	int *result = (int *)calloc(len1 + len2, sizeof(int));
@@ -60,8 +60,8 @@ int *mult(char *a, char *b)
 
 		for (j = len2 - 1; j >= 0; j--)
 		{
-			int digit1 = a[i] - '0';
-			int digit2 = b[j] - '0';
+			int digit1 = num1[i] - '0';
+			int digit2 = num2[j] - '0';
 			int product = digit1 * digit2;
 			int sum = product + result[i + j + 1] + carry;
 
@@ -86,30 +86,39 @@ int *mult(char *a, char *b)
 
 int main(int argc, char *argv[])
 {
-	char *num1 = argv[1];
-	char *num2 = argv[2];
+	char *num1;
+	char *num2;
+	size_t len;
 	int *result;
+	bool is_non_zero = false;
 	size_t i;
 
-	if (argc != 3 || !is_digits(num1) || !is_digits(num2))
+	if (argc != 3)
 		exit_error();
 
-	if (*num1 == '0' || *num2 == '0')
-	{
-		printf("0\n");
-		return (0);
-	}
+	num1 = argv[1];
+	num2 = argv[2];
+	len = strlen(num1) + strlen(num2);
+
+	if (!is_digits(num1) || !is_digits(num2))
+		exit_error();
 
 	result = mult(num1, num2);
 
-	for (i = 0; i < strlen(num1) + strlen(num2); i++)
+	for (i = 0; i < len; i++)
+	{
 		if (result[i] != 0)
-			break;
+			is_non_zero = true;
 
-	for (; i < strlen(num1) + strlen(num2); i++)
-		printf("%d", result[i]);
+		if (is_non_zero)
+			printf("%d", result[i]);
+	}
+
+	if (!is_non_zero)
+		printf("0");
 
 	printf("\n");
+
 	free(result);
 
 	return (0);
