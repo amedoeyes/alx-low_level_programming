@@ -29,7 +29,7 @@ char *mult(char *a, char *b)
 	int len2 = strlen(b);
 	int i, j;
 
-	char *result = (char *)malloc(len1 + len2 + 1);
+	char *result = (char *)malloc(len1 + len2);
 
 	if (result == NULL)
 		exit_error();
@@ -39,16 +39,20 @@ char *mult(char *a, char *b)
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
+		int carry = 0;
+
 		for (j = len2 - 1; j >= 0; j--)
 		{
 			int digit1 = a[i] - '0';
 			int digit2 = b[j] - '0';
 			int product = digit1 * digit2;
-			int sum = product + (result[i + j + 1] - '0');
+			int sum = product + (result[i + j + 1] - '0') + carry;
 
 			result[i + j + 1] = (sum % 10) + '0';
-			result[i + j] = (sum / 10) + '0';
+			carry = sum / 10;
 		}
+
+		result[i + j + 1] = (carry % 10) + '0';
 	}
 
 	return (result);
@@ -84,6 +88,9 @@ int main(int argc, char *argv[])
 			exit_error();
 
 	result = mult(argv[1], argv[2]);
+
+	while (*result == '0')
+		result++;
 
 	printf("%s\n", result);
 
