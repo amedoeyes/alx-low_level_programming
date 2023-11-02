@@ -34,7 +34,7 @@ char *mult(char *a, char *b)
 	if (result == NULL)
 		exit_error();
 
-	memset(result, '0', len1 + len2);
+	memset(result, '0', len1 + len2 + 1);
 	result[len1 + len2] = '\0';
 
 	for (i = len1 - 1; i >= 0; i--)
