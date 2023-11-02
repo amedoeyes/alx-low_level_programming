@@ -80,7 +80,10 @@ int main(int argc, char *argv[])
 	num2 = argv[2];
 
 	if (*num1 == '0' || *num2 == '0')
-		exit_error();
+	{
+		printf("0\n");
+		return (0);
+	}
 
 	len1 = strlen(num1);
 	len2 = strlen(num2);
