@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,6 +16,25 @@ void exit_error(void)
 }
 
 /**
+ * is_digits - check if string is digits
+ *
+ * @str: string
+ *
+ * Return: true or false
+ */
+
+bool is_digits(char *str)
+{
+	int i;
+
+	for (i = 0; str[i]; i++)
+		if (!isdigit(str[i]))
+			return (false);
+
+	return (true);
+}
+
+/**
  * mult - multiplies two string of numbers
  *
  * @a: string 1
@@ -23,18 +43,16 @@ void exit_error(void)
  * Return: pointer to result
  */
 
-char *mult(char *a, char *b)
+int *mult(char *a, char *b)
 {
 	int len1 = strlen(a);
 	int len2 = strlen(b);
 	int i, j;
 
-	char *result = (char *)malloc(len1 + len2);
+	int *result = (int *)calloc(len1 + len2, sizeof(int));
 
 	if (result == NULL)
 		exit_error();
-
-	memset(result, '0', len1 + len2);
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
@@ -45,13 +63,13 @@ char *mult(char *a, char *b)
 			int digit1 = a[i] - '0';
 			int digit2 = b[j] - '0';
 			int product = digit1 * digit2;
-			int sum = product + (result[i + j + 1] - '0') + carry;
+			int sum = product + result[i + j + 1] + carry;
 
-			result[i + j + 1] = (sum % 10) + '0';
+			result[i + j + 1] = (sum % 10);
 			carry = sum / 10;
 		}
 
-		result[i + j + 1] = (carry % 10) + '0';
+		result[i + j + 1] = (carry % 10);
 	}
 
 	return (result);
@@ -68,16 +86,13 @@ char *mult(char *a, char *b)
 
 int main(int argc, char *argv[])
 {
-	char *result;
-	int len1, len2;
-	char *num1, *num2;
-	int i;
+	char *num1 = argv[1];
+	char *num2 = argv[2];
+	int *result;
+	size_t i;
 
-	if (argc != 3)
+	if (argc != 3 || !is_digits(num1) || !is_digits(num2))
 		exit_error();
-
-	num1 = argv[1];
-	num2 = argv[2];
 
 	if (*num1 == '0' || *num2 == '0')
 	{
@@ -85,23 +100,16 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	len1 = strlen(num1);
-	len2 = strlen(num2);
-
-	for (i = 0; i < len1; i++)
-		if (!isdigit(num1[i]))
-			exit_error();
-
-	for (i = 0; i < len2; i++)
-		if (!isdigit(num2[i]))
-			exit_error();
-
 	result = mult(num1, num2);
 
-	while (*result == '0')
-		result++;
+	for (i = 0; i < strlen(num1) + strlen(num2); i++)
+		if (result[i] != 0)
+			break;
 
-	printf("%s\n", result);
+	for (; i < strlen(num1) + strlen(num2); i++)
+		printf("%d", result[i]);
+
+	printf("\n");
 
 	return (0);
 }
