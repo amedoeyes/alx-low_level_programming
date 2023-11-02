@@ -89,10 +89,14 @@ int main(int argc, char *argv[])
 
 	result = mult(argv[1], argv[2]);
 
-	while (*result == '0')
-		result++;
+	for (i = 0; i < len1 + len2; i++)
+		if (result[i] != '0')
+			break;
 
-	printf("%s\n", result);
+	if (i == len1 + len2)
+		printf("0\n");
+	else
+		printf("%s\n", result + i);
 
 	return (0);
 }
