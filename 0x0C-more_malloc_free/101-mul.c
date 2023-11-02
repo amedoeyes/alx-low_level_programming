@@ -71,32 +71,35 @@ int main(int argc, char *argv[])
 {
 	char *result;
 	int len1, len2;
+	char *num1, *num2;
 	int i;
 
 	if (argc != 3)
 		exit_error();
 
-	len1 = strlen(argv[1]);
-	len2 = strlen(argv[2]);
+	num1 = argv[1];
+	num2 = argv[2];
+
+	if (*num1 == '0' || *num2 == '0')
+		exit_error();
+
+	len1 = strlen(num1);
+	len2 = strlen(num2);
 
 	for (i = 0; i < len1; i++)
-		if (!isdigit(argv[1][i]))
+		if (!isdigit(num1[i]))
 			exit_error();
 
 	for (i = 0; i < len2; i++)
-		if (!isdigit(argv[2][i]))
+		if (!isdigit(num2[i]))
 			exit_error();
 
-	result = mult(argv[1], argv[2]);
+	result = mult(num1, num2);
 
-	for (i = 0; i < len1 + len2; i++)
-		if (result[i] != '0')
-			break;
+	while (*result == '0')
+		result++;
 
-	if (i == len1 + len2)
-		printf("0\n");
-	else
-		printf("%s\n", result + i);
+	printf("%s\n", result);
 
 	return (0);
 }
