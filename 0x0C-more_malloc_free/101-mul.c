@@ -110,6 +110,7 @@ int main(int argc, char *argv[])
 		printf("%d", result[i]);
 
 	printf("\n");
+	free(result);
 
 	return (0);
 }
