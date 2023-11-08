@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 /**
  * print_name - print name
  *
