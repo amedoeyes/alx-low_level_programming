@@ -1,5 +1,4 @@
 #include <stdarg.h>
-#include <stddef.h>
 #include <stdio.h>
 
 /**
@@ -12,7 +11,7 @@ void print_all(const char *const format, ...)
 {
 	va_list args;
 	size_t i = 0;
-	const char *separator = "";
+	char *separator = "";
 
 	va_start(args, format);
 
@@ -33,9 +32,13 @@ void print_all(const char *const format, ...)
 			printf("%f", va_arg(args, double));
 			break;
 		case 's':
+		{
+			char *s = va_arg(args, char *);
+
 			printf("%s", separator);
-			printf("%s", va_arg(args, char *));
-			break;
+			printf("%s", s ? s : "(nil)");
+		}
+		break;
 		}
 
 		separator = ", ";
