@@ -10,7 +10,12 @@
 
 int delete_first(listint_t **head)
 {
-	listint_t *temp = *head;
+	listint_t *temp;
+
+	if (*head == NULL)
+		return (-1);
+
+	temp = *head;
 
 	*head = (*head)->next;
 	free(temp);
@@ -28,7 +33,12 @@ int delete_first(listint_t **head)
 
 int delete_last(listint_t **head)
 {
-	listint_t *temp = *head;
+	listint_t *temp;
+
+	if (*head == NULL)
+		return (-1);
+
+	temp = *head;
 
 	while (!temp->next)
 		temp = temp->next;
